@@ -1,0 +1,4 @@
+[build]
+  base = "aisha-store"
+  publish = "dist"
+  command = "npm run build"
