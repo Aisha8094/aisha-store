@@ -13,11 +13,6 @@ export default function App() {
   const addToCart = (p) => setCart([...cart, p]);
   const total = cart.reduce((s, i) => s + i.price, 0);
 
-  const orderWhatsApp = () => {
-    const text = `Salam Aisha Store!\nMujhe ye order karna hai:\n${cart.map(c=>`- ${c.name} Rs.${c.price}`).join("\n")}\nTotal: Rs.${total}`;
-    window.open(`https://wa.me/923000000000?text=${encodeURIComponent(text)}`, "_blank");
-  };
-
   const orderEmail = async () => {
     setLoading(true);
     const res = await fetch("https://formsubmit.co/ajax/mushtaqayesha339@gmail.com", {
@@ -59,11 +54,10 @@ export default function App() {
       </div>
 
       {cart.length > 0 && (
-        <div className="fixed bottom-0 left-0 right-0 bg-white p-4 flex gap-3 shadow-[0_-10px_30px_rgba(0,0,0,0.1)]">
-          <button onClick={orderEmail} disabled={loading} className="flex-1 border-2 border-pink-600 text-pink-600 py-3 rounded-xl font-bold">
-            {loading ? "Bhej rahe hain..." : "📧 Email Order"}
+        <div className="fixed bottom-0 left-0 right-0 bg-white p-4 shadow-[0_-10px_30px_rgba(0,0,0,0.1)]">
+          <button onClick={orderEmail} disabled={loading} className="w-full bg-pink-600 text-white py-3 rounded-xl font-bold text-lg">
+            {loading ? "Bhej rahe hain..." : "📧 Email se Order Karein"}
           </button>
-          <button onClick={orderWhatsApp} className="flex-1 bg-green-600 text-white py-3 rounded-xl font-bold">WhatsApp Order</button>
         </div>
       )}
     </div>
